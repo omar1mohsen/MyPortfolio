@@ -1,38 +1,1055 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  --main-color: #111111;
+  --sec-color: #7843e9;
+  --thr-color: #a581f0;
+  --white-color: #fefefe;
+  --text-color: #656578;
+  --twitter-color: #06a1e1;
+  --linkedin-color: #37497b;
+  --whatapp-color: #25d366;
+  --gmail-color: #c61a1a;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  @apply m-0 p-0 box-border;
+  font-family: "Roboto";
+  scroll-behavior: smooth !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body::-webkit-scrollbar,
+.modal .card::-webkit-scrollbar {
+  @apply w-2 rounded-xl hover:w-2.5 transition-all;
+  background-image: linear-gradient(131deg, var(--sec-color), var(--thr-color), var(--sec-color), var(--thr-color));
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body::-webkit-scrollbar-thumb,
+.modal .card::-webkit-scrollbar-thumb {
+  @apply bg-[--white-color]  rounded-2xl scroll-smooth;
 }
 
-.App-link {
-  color: #61dafb;
+/* start navbar styles*/
+.nav {
+  @apply fixed w-full uppercase text-[--main-color] font-bold items-center text-sm md:text-lg px-4 md:px-10 py-3 flex justify-between   top-0 left-0 z-50 max-sm:py-4 bg-white  shadow-md shadow-[--thr-color];
 }
 
-@keyframes App-logo-spin {
+.logo {
+  @apply flex justify-center items-center lg:text-xl text-[--sec-color] hover:text-[--thr-color] scale-90 hover:scale-100 transition-all;
+}
+.logo .logo-img {
+  @apply w-10 lg:w-16 h-full rounded-full me-1;
+}
+
+.nav-list {
+  background-image: linear-gradient(131deg, var(--thr-color), var(--sec-color), var(--sec-color), var(--thr-color));
+  background-size: 300% 100%;
+  @apply hidden z-[999]  flex-col justify-start items-start  w-[60%] max-sm:w-[80%] h-screen px-6 py-12 rounded-e-xl absolute  left-0 top-0;
+}
+.nav-list .navLogo {
+  @apply flex flex-col justify-center space-y-3 items-center scale-100 hover:scale-105  mx-auto text-xl text-[--white-color];
+}
+.nav-list .navLogo .logo-img {
+  @apply w-16 h-full rounded-full mb-2;
+}
+.nav-list hr {
+  @apply w-full h-0.5 bg-[--text-color] opacity-60  block;
+}
+.nav-list span {
+  font-family: "Pacifico", cursive;
+  @apply w-full my-4 text-center flex items-center justify-center font-semibold text-xl tracking-wider italic text-[--white-color];
+}
+.nav-list span .icon {
+  @apply w-5 h-5 ms-2 text-[#FFC83D];
+  -webkit-animation: goDown 1.3s linear infinite;
+          animation: goDown 1.3s linear infinite;
+}
+.nav-list .scoialNav {
+  @apply flex justify-center items-center w-fit mx-auto rounded-lg space-x-3 bg-[--white-color];
+}
+
+.nav-item {
+  @apply relative overflow-hidden  my-3 transition-all block w-full text-start py-4 text-[--white-color]  text-lg font-semibold border-b-gray-200/40 border-b-2;
+}
+.nav-item a {
+  @apply flex justify-start items-center hover:ps-8 hover:scale-105 hover:text-[--linkedin-color] transition-all scroll-smooth;
+}
+.nav-item a .icon {
+  @apply w-6 h-6 me-3;
+}
+
+.activeList {
+  @apply flex;
+  -webkit-animation: slidleft 0.3s linear;
+          animation: slidleft 0.3s linear;
+}
+
+.burger-btn {
+  @apply h-[2.3rem] relative  px-2 py-2 space-y-1.5 w-12 border-2 border-[--sec-color]  rounded;
+}
+.burger-btn span {
+  @apply block w-7 h-[2px] bg-[--sec-color] animate-pulse transition-all shadow-sm shadow-[--sec-color];
+}
+.burger-btn span:nth-child(1) {
+  -webkit-animation: fillSpan 0.5s infinite alternate linear;
+          animation: fillSpan 0.5s infinite alternate linear;
+}
+.burger-btn span:nth-child(2) {
+  -webkit-animation: fillSpan 0.5s infinite alternate linear;
+          animation: fillSpan 0.5s infinite alternate linear;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+.burger-btn span:nth-child(3) {
+  -webkit-animation: fillSpan 0.5s infinite alternate linear;
+          animation: fillSpan 0.5s infinite alternate linear;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+.burger-btn:hover span {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+.activeBtn span:nth-child(1),
+.activeBtn span:nth-child(3) {
+  @apply absolute left-[50%] -translate-x-[50%] bottom-[50%] -translate-y-[50%] w-7;
+}
+.activeBtn span:nth-child(1) {
+  @apply -rotate-45;
+}
+.activeBtn span:nth-child(3) {
+  @apply rotate-45;
+}
+.activeBtn span:nth-child(2) {
+  @apply opacity-0 animate-none;
+}
+
+.progress-bar-container {
+  @apply absolute bottom-0 left-0 w-full h-1;
+}
+.progress-bar-container .progress-bar {
+  @apply h-full bg-[--sec-color] transition-all;
+}
+
+.themBtn {
+  @apply w-full overflow-hidden mb-4;
+  @apply flex justify-center items-start;
+}
+.themBtn #toggle_checkbox {
+  display: none;
+}
+.themBtn label {
+  @apply my-3  w-32 h-14 block relative cursor-pointer select-none;
+  background-color: #77b5fe;
+  border-radius: 56px;
+  -webkit-transition: 0.3s ease background-color;
+  transition: 0.3s ease background-color;
+  overflow: hidden;
+}
+.themBtn #star {
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  width: 30px;
+  height: 30px;
+  background-color: #fafd0f;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  border-radius: 50%;
+  -webkit-transition: 0.3s ease top, 0.3s ease left, 0.3s ease transform, 0.3s ease background-color;
+  transition: 0.3s ease top, 0.3s ease left, 0.3s ease transform, 0.3s ease background-color;
+  z-index: 1;
+}
+.themBtn #star-1 {
+  position: relative;
+}
+.themBtn #star-2 {
+  position: absolute;
+  -webkit-transform: rotateZ(36deg);
+          transform: rotateZ(36deg);
+}
+.themBtn .star {
+  top: 0;
+  left: -7px;
+  font-size: 54px;
+  line-height: 28px;
+  color: #fafd0f;
+  -webkit-transition: 0.3s ease color;
+  transition: 0.3s ease color;
+}
+.themBtn #moon {
+  position: absolute;
+  bottom: -52px;
+  right: 8px;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 50%;
+  -webkit-transition: 0.3s ease bottom;
+  transition: 0.3s ease bottom;
+}
+.themBtn #moon:before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: -17px;
+  width: 40px;
+  height: 40px;
+  background-color: #03a9f4;
+  border-radius: 50%;
+  -webkit-transition: 0.3s ease background-color;
+  transition: 0.3s ease background-color;
+}
+.themBtn #toggle_checkbox:checked + label {
+  background-color: #000;
+}
+.themBtn #toggle_checkbox:checked + label #star {
+  top: 3px;
+  left: 64px;
+  -webkit-transform: scale(0.3);
+          transform: scale(0.3);
+  background-color: yellow;
+}
+.themBtn #toggle_checkbox:checked + label .star {
+  color: yellow;
+}
+.themBtn #toggle_checkbox:checked + label #moon {
+  bottom: 8px;
+}
+.themBtn #toggle_checkbox:checked + label #moon:before {
+  background-color: #000;
+}
+
+/* end navbar styles*/
+/* start herosec styles*/
+.herosec {
+  background: -webkit-gradient(linear, left top, right top, from(rgba(245, 245, 245, 0.8)), to(rgba(245, 245, 245, 0.8))), url(./assets/homebg.svg);
+  background: linear-gradient(to right, rgba(245, 245, 245, 0.8), rgba(245, 245, 245, 0.8)), url(./assets/homebg.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @apply md:pt-6 lg:pt-24 pb-6 px-2 sm:px-8 sm:h-screen flex items-center flex-wrap relative;
+}
+.herosec .sideNav {
+  @apply fixed left-0 top-[50%] -translate-y-[50%] flex flex-col bg-white rounded-lg py-1 px-1 max-lg:hidden;
+}
+.herosec .sideNav .linkicon {
+  @apply w-6 h-6 xl:w-8 xl:h-8;
+}
+.herosec .left-side,
+.herosec .right-side {
+  @apply md:w-1/2  w-full;
+}
+.herosec .left-side {
+  @apply space-y-5;
+}
+.herosec .left-side img {
+  @apply hidden max-md:block w-80 max-h-full mx-auto;
+  -webkit-animation: bounce 1s linear alternate infinite;
+          animation: bounce 1s linear alternate infinite;
+}
+.herosec .left-side .content {
+  @apply relative w-full h-10 flex justify-center;
+}
+.herosec .left-side .content h1 {
+  @apply max-sm:text-3xl text-4xl md:text-3xl xl:text-5xl;
+  color: #fff;
+  position: absolute;
+}
+.herosec .left-side .content h1:nth-child(1) {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--sec-color);
+}
+.herosec .left-side .content h1:nth-child(2) {
+  color: var(--sec-color);
+  -webkit-animation: animate 4s ease-in-out infinite;
+          animation: animate 4s ease-in-out infinite;
+}
+.herosec .left-side .btn {
+  @apply max-sm:text-xs text-sm lg:text-lg;
+}
+.herosec .left-side h3 {
+  @apply text-xl xl:text-3xl my-2 font-bold italic text-center text-[--sec-color] opacity-90;
+}
+.herosec .left-side p {
+  @apply w-[98%] lg:w-[80%] mx-auto text-center leading-relaxed text-sm xl:text-lg font-semibold text-[--thr-color];
+}
+.herosec .right-side {
+  @apply max-md:hidden;
+}
+.herosec .right-side img {
+  @apply w-full h-96 mx-auto;
+  -webkit-animation: bounce 1s linear alternate infinite;
+          animation: bounce 1s linear alternate infinite;
+}
+.herosec .bottom-side {
+  @apply flex justify-center items-center space-x-1;
+}
+.herosec .bottom-side .info-btn,
+.herosec .bottom-side .btn-arrow {
+  @apply ms-2.5;
+}
+.herosec .bottom-side .resumeBtn {
+  @apply me-3;
+}
+.herosec .bottom-side .resumeBtn .btn-arrow {
+  -webkit-animation: goDown 1.3s linear infinite;
+          animation: goDown 1.3s linear infinite;
+}
+.herosec .bottom-side .info-btn {
+  -webkit-animation: showing 2s infinite;
+          animation: showing 2s infinite;
+}
+
+/*start aboutsec styles*/
+.aboutsec {
+  @apply bg-gray-200/50;
+}
+
+.about-contanier {
+  @apply flex justify-center items-start;
+  @apply flex-wrap lg:px-10 xl:px-20 mt-8;
+}
+.about-contanier .left-side,
+.about-contanier .right-side {
+  @apply md:pe-12 xl:pe-20 w-full lg:w-1/2;
+}
+.about-contanier .left-side h3,
+.about-contanier .right-side h3 {
+  @apply text-3xl my-8 font-bold text-[--sec-color];
+}
+.about-contanier .left-side {
+  @apply max-md:text-center;
+}
+.about-contanier .left-side .about-dec {
+  @apply my-4 block text-[--text-color] leading-[1.7]  tracking-wider;
+}
+.about-contanier .left-side .about-dec .main-word {
+  @apply font-extrabold text-[--sec-color];
+}
+.about-contanier .left-side .about-dec a {
+  @apply underline font-extrabold me-1 text-[--sec-color];
+}
+.about-contanier .right-side {
+  @apply max-md:text-center px-3;
+}
+
+.skills-contanier {
+  @apply flex items-center justify-start max-md:justify-center flex-wrap gap-3;
+}
+.skills-contanier .skill-item {
+  @apply text-[--text-color] text-sm font-semibold p-3 px-6 bg-gray-300/70 rounded-lg hover:bg-[--sec-color] transition-all hover:text-[--white-color] tracking-wider select-none;
+}
+
+/*end aboutsec styles*/
+/*start prtojectSec styles*/
+.prtojectSec .projectsContanier {
+  @apply flex justify-center items-start;
+  @apply mt-6 justify-start lg:px-36 flex-wrap;
+}
+.prtojectSec .projectsContanier .card {
+  @apply w-full sm:w-1/2  lg:w-1/3  px-3 py-2;
+}
+.prtojectSec .projectsContanier .card .projectCard {
+  @apply shadow-lg shadow-gray-300 rounded-lg relative overflow-hidden;
+}
+.prtojectSec .projectsContanier .card .projectCard .projectDes {
+  @apply absolute top-[-100%] left-0 w-full h-full flex flex-col justify-center items-center overflow-hidden transition-all duration-300;
+}
+.prtojectSec .projectsContanier .card .projectCard .projectDes h1 {
+  @apply text-center my-4 text-lg font-bold text-[--white-color];
+}
+.prtojectSec .projectsContanier .card .projectCard .projectDes button {
+  @apply px-6 py-2 bg-[--white-color] rounded-xl font-bold tracking-wider capitalize text-[--sec-color]  skew-y-6 hover:scale-105 transition-all hover:bg-slate-200 hover:skew-y-0 my-4;
+}
+.prtojectSec .projectsContanier .card .projectCard .projectDes span {
+  @apply py-2 px-4 bg-[--white-color] absolute -top-0.5 -left-1 rounded-e-xl font-semibold text-[--sec-color];
+}
+.prtojectSec .projectsContanier .card .projectCard::before {
+  content: "";
+  background: linear-gradient(45deg, rgba(138, 3, 187, 0.774) 35%, rgb(117, 59, 243) 100%);
+  @apply absolute left-0 top-[-100%] w-full h-full rounded-lg transition-all duration-200;
+}
+.prtojectSec .projectsContanier .card .projectCard:hover::before, .prtojectSec .projectsContanier .card .projectCard:hover .projectDes {
+  @apply top-0;
+}
+.prtojectSec .projectsContanier .card .projectCard img {
+  @apply h-[250px] w-full rounded-lg;
+}
+.prtojectSec .moreBtn {
+  @apply mt-10 scale-110  mx-auto block w-fit;
+}
+
+.modal {
+  @apply flex justify-center items-start;
+  @apply w-full h-full flex justify-center items-center bg-black/60;
+}
+.modal .card {
+  background: linear-gradient(45deg, rgba(138, 3, 187, 0.774) 35%, rgb(117, 59, 243) 100%);
+  @apply w-[95%] lg:w-[80%] py-5 px-6 max-sm:px-2 rounded-lg flex justify-center relative items-center flex-wrap max-h-[80vh] max-xl:overflow-y-scroll pt-8 max-xl:pt-16;
+}
+.modal .card .closeBtn {
+  @apply w-8 h-8 text-[--white-color] absolute top-5 right-5 z-10 hover:scale-110 hover:rotate-180 transition-all cursor-pointer;
+}
+.modal .card .left-side,
+.modal .card .right-side {
+  @apply w-1/2 max-xl:w-full;
+}
+.modal .card .left-side {
+  @apply relative  shadow-[--sec-color] shadow-lg rounded-lg hover:shadow-xl hover:shadow-[--sec-color] transition-all;
+}
+.modal .card .left-side img {
+  @apply h-full max-xl:max-h-[400px] xl:min-h-[500px] w-full rounded-lg;
+}
+.modal .card .left-side:hover .links {
+  @apply bg-black/70;
+}
+.modal .card .left-side:hover .links .link {
+  @apply opacity-100;
+}
+.modal .card .left-side .links {
+  @apply absolute top-0 left-0 bg-black/20 max-sm:bg-black/60 w-full h-full rounded-lg flex justify-center items-center space-x-6;
+}
+.modal .card .left-side .links .error {
+  @apply capitalize font-semibold text-[--white-color] text-lg;
+}
+.modal .card .left-side .links .link {
+  @apply p-3 rounded-[50%] bg-[--text-color] hover:bg-[--white-color] hover:scale-110 transition-all opacity-30 max-sm:opacity-70 relative;
+}
+.modal .card .left-side .links .link::after {
+  @apply absolute   top-[50%] translate-y-[-50%] bg-[--text-color] px-3 py-1 transition-all opacity-0 capitalize font-semibold;
+}
+.modal .card .left-side .links .link:first-child::after {
+  content: "deploy";
+  @apply -left-[4.1rem]  rounded-s-lg;
+}
+.modal .card .left-side .links .link:last-child::after {
+  content: "Repo";
+  @apply -right-[3.5rem]  rounded-e-lg;
+}
+.modal .card .left-side .links .link:hover::after {
+  @apply hover:bg-[--white-color] text-[--sec-color];
+}
+.modal .card .left-side .links .link:hover:first-child:after {
+  -webkit-animation: showTextLeft 0.3s linear forwards;
+          animation: showTextLeft 0.3s linear forwards;
+}
+.modal .card .left-side .links .link:hover:last-child:after {
+  -webkit-animation: showTextRight 0.3s linear forwards;
+          animation: showTextRight 0.3s linear forwards;
+}
+.modal .card .left-side .links .link .icon {
+  @apply w-7 h-7 text-[--white-color] transition-all;
+}
+.modal .card .left-side .links .link:hover .icon {
+  @apply text-[--sec-color] scale-125;
+}
+.modal .card .right-side {
+  @apply ps-6 max-lg:px-2 max-xl:mt-5;
+}
+.modal .card .right-side h2 {
+  @apply font-bold text-3xl text-center mb-3 tracking-tight text-[--thr-color] italic;
+}
+.modal .card .right-side .title {
+  @apply font-bold uppercase block mx-auto my-1 text-center text-[--white-color] text-lg;
+}
+.modal .card .right-side hr {
+  @apply w-[60%] h-0.5  border-0 mx-auto my-4 rounded-xl bg-gray-300;
+}
+.modal .card .right-side p {
+  @apply text-[--white-color] font-semibold capitalize leading-relaxed tracking-wider w-full max-lg:text-sm  mb-4 text-center;
+}
+.modal .card .skills-contanier {
+  @apply justify-center gap-2;
+}
+.modal .card .skill-item {
+  @apply text-[--sec-color] bg-slate-200 hover:bg-[--sec-color] hover:text-[--white-color] max-xl:px-4 max-xl:py-2;
+}
+
+/*end prtojectSec styles*/
+/*start contactSec styles*/
+.contactsec {
+  @apply xl:px-24 py-16;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(245, 245, 245, 0.8)), to(rgba(245, 245, 245, 0.8))), url(./assets/homebg.svg);
+  background: linear-gradient(to right, rgba(245, 245, 245, 0.8), rgba(245, 245, 245, 0.8)), url(./assets/homebg.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form {
+  @apply flex justify-center items-center flex-wrap;
+}
+.form .left-side,
+.form .right-side {
+  @apply w-full lg:w-1/2 overflow-hidden max-lg:mb-5 px-4;
+}
+.form svg {
+  @apply w-full max-h-[400px] mx-auto block;
+}
+.form #envelope {
+  -webkit-animation: float 2s ease-in-out infinite;
+          animation: float 2s ease-in-out infinite;
+}
+.form #star1,
+.form #star2,
+.form #star3,
+.form #star4,
+.form #star5,
+.form #star6 {
+  -webkit-animation: blink 1s ease-in-out infinite;
+          animation: blink 1s ease-in-out infinite;
+}
+.form #star2 {
+  -webkit-animation-delay: 100ms;
+          animation-delay: 100ms;
+}
+.form #star3 {
+  -webkit-animation-delay: 500ms;
+          animation-delay: 500ms;
+}
+.form #star4 {
+  -webkit-animation-delay: 700ms;
+          animation-delay: 700ms;
+}
+.form #star5 {
+  -webkit-animation-delay: 300ms;
+          animation-delay: 300ms;
+}
+.form #star6 {
+  -webkit-animation-delay: 200ms;
+          animation-delay: 200ms;
+}
+.form form .title {
+  @apply text-center text-4xl text-[--sec-color] flex justify-center items-center;
+  font-family: "Pacifico", cursive;
+}
+.form form .title .waving-hand {
+  -webkit-animation: wave 2.1s 0.6s infinite;
+          animation: wave 2.1s 0.6s infinite;
+  -webkit-transform-origin: 75% 75%;
+          transform-origin: 75% 75%;
+}
+.form form .form-control {
+  @apply my-3  w-full border-gray-300/70 border-2 transition-all;
+  background-color: #f2f6f8;
+  border-radius: 2rem;
+}
+.form form .form-control.thick {
+  height: 3.3rem;
+  padding: 0.5rem 3.5rem;
+}
+.form form .form-control:focus {
+  @apply border-[--sec-color] border-2 outline-none shadow-sm shadow-[--sec-color];
+  background-color: #f2f6f8;
+}
+.form form .message .form-control {
+  padding: 0.5rem 1.8rem;
+}
+.form form ::-webkit-input-placeholder {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #838788;
+  position: relative;
+  left: 0;
+}
+.form form ::-moz-placeholder {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #838788;
+  position: relative;
+  left: 0;
+}
+.form form :-ms-input-placeholder {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #838788;
+  position: relative;
+  left: 0;
+}
+.form form ::-ms-input-placeholder {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #838788;
+  position: relative;
+  left: 0;
+}
+.form form ::placeholder {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #838788;
+  position: relative;
+  left: 0;
+}
+.form form input,
+.form form textarea {
+  font-family: "Quicksand", sans-serif;
+  color: #212529;
+  font-size: 1.1rem;
+}
+.form form .icon {
+  color: #57565c;
+  height: 1.3rem;
+  position: absolute;
+  left: 1.5rem;
+  top: 1.1rem;
+}
+.form .btn.btn-primary {
+  @apply my-4 mx-auto;
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  padding: 0 3rem;
+  border: 0;
+  border-radius: 3rem;
+  background-image: linear-gradient(131deg, var(--sec-color), var(--thr-color), var(--sec-color), var(--thr-color));
+  background-size: 300% 100%;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.form .btn.btn-primary:hover:enabled {
+  -webkit-box-shadow: 0 0.5em 0.5em -0.4em var(--sec-color);
+          box-shadow: 0 0.5em 0.5em -0.4em var(--sec-color);
+  background-size: 100% 100%;
+  -webkit-transform: translateY(-0.15em);
+          transform: translateY(-0.15em);
+}
+.form .errorMessage {
+  @apply block text-end me-4 italic font-bold text-sm text-[--sec-color] capitalize opacity-90;
+}
+
+/*end contactSec styles*/
+/*start footer */
+.footer {
+  @apply bg-black text-[--white-color];
+}
+.footer h3 {
+  @apply text-2xl text-center font-semibold tracking-wider mb-6;
+}
+.footer span {
+  font-family: "Quicksand", sans-serif;
+  @apply text-center text-xs md:text-sm italic font-semibold flex justify-center items-center   sm:tracking-widest;
+}
+.footer span a {
+  @apply ms-1 md:ms-2 text-[--sec-color];
+}
+
+.footerNav {
+  @apply flex justify-center items-center  space-x-2 bg-[--white-color] w-fit mx-auto  rounded-lg text-black shadow-lg shadow-[--sec-color];
+}
+.footerNav .socialLink {
+  @apply px-4;
+}
+.footerNav .socialLink .linkicon {
+  @apply w-8 h-8;
+}
+
+.secfooterNav {
+  @apply my-10 flex justify-center items-center space-x-3  w-fit mx-auto border-2 border-gray-200 rounded-xl py-4 px-6 shadow-lg shadow-[--sec-color];
+}
+.secfooterNav a {
+  @apply py-2 font-semibold text-[--sec-color] capitalize  hover:text-[--white-color] md:text-lg hover:border-b-2 border-b-[--white-color] transition-all;
+}
+
+/*end footer */
+/*common items*/
+.sec {
+  @apply pt-24 pb-8 max-sm:px-3 px-6 md:px-8 rounded-lg shadow-lg;
+}
+.sec .sec-title {
+  @apply relative text-4xl text-center font-bold uppercase tracking-[1.6px] py-3 italic text-[--sec-color];
+}
+.sec .sec-title::before {
+  content: "";
+  @apply absolute bottom-0 left-[50%] -translate-x-[45%] h-1 w-24 bg-[--sec-color] rounded-md;
+}
+.sec .sec-title::after {
+  content: "";
+  background: -webkit-gradient(linear, left top, left bottom, from(var(--sec-color)), to(var(--thr-color)));
+  background: linear-gradient(var(--sec-color), var(--thr-color));
+  @apply absolute -bottom-2 -translate-x-[45%] h-5 w-5  rounded-[50%];
+  -webkit-animation: moving 1s infinite ease-in-out alternate;
+          animation: moving 1s infinite ease-in-out alternate;
+}
+.sec .sec-dec {
+  @apply my-6 text-sm lg:text-lg lg:w-[60%] mx-auto  text-center font-[500] tracking-widest text-[--text-color];
+}
+
+.btn {
+  @apply py-2 px-5 lg:px-6 rounded-xl bg-[--sec-color] text-[--white-color] font-bold uppercase text-sm sm:text-lg hover:scale-[1.05] transition-all hover:shadow-lg hover:shadow-[--sec-color] flex justify-center items-center;
+  background-image: linear-gradient(131deg, var(--thr-color), var(--sec-color), var(--sec-color), var(--thr-color));
+  background-size: 300% 100%;
+}
+
+.btn:hover {
+  -webkit-box-shadow: 0 0.5em 0.5em -0.4em var(--sec-color);
+          box-shadow: 0 0.5em 0.5em -0.4em var(--sec-color);
+  background-size: 100% 100%;
+  -webkit-transform: translateY(-0.15em);
+          transform: translateY(-0.15em);
+}
+
+.socialLink {
+  @apply py-3 px-2  relative cursor-pointer;
+}
+.socialLink::before {
+  content: "";
+  @apply w-full h-full transition-all  bg-[--sec-color] absolute left-0 top-0 opacity-0 rounded-lg;
+}
+.socialLink:hover::before {
+  @apply opacity-30;
+}
+.socialLink .linkicon {
+  @apply w-8 h-8;
+}
+.socialLink .linkedin {
+  @apply text-[--linkedin-color];
+}
+.socialLink .twitter {
+  @apply text-[--twitter-color];
+}
+.socialLink .whatapp {
+  @apply text-[--whatapp-color];
+}
+.socialLink .gmail {
+  @apply text-[--gmail-color];
+}
+
+.scrollBtnTop {
+  background-image: linear-gradient(131deg, var(--thr-color), var(--sec-color), var(--sec-color), var(--thr-color));
+  background-size: 300% 100%;
+  @apply fixed bottom-5 right-5 z-50  rounded-lg  p-1 opacity-90 hover:opacity-100 scale-90 hover:scale-105 text-[--white-color] shadow-md transition duration-150 ease-in-out;
+}
+.scrollBtnTop .icon {
+  @apply w-8 h-8;
+}
+
+.hide {
+  @apply hidden;
+}
+
+.dark {
+  background-image: none;
+  @apply bg-black;
+}
+.dark .sec .sec-dec {
+  @apply text-[--white-color];
+}
+.dark .sec .about-dec {
+  @apply text-[--white-color];
+}
+.dark .sec .skill-item {
+  @apply text-[--white-color];
+}
+.dark .sec .projectsContanier .card .projectCard {
+  @apply shadow-md shadow-[--sec-color];
+}
+
+/*animations styles */
+@-webkit-keyframes fillSpan {
   from {
-    transform: rotate(0deg);
+    @apply w-3;
   }
   to {
-    transform: rotate(360deg);
+    @apply w-7;
+  }
+}
+@keyframes fillSpan {
+  from {
+    @apply w-3;
+  }
+  to {
+    @apply w-7;
+  }
+}
+@-webkit-keyframes slidleft {
+  from {
+    opacity: 0;
+    left: -100%;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+@keyframes slidleft {
+  from {
+    opacity: 0;
+    left: -100%;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+@-webkit-keyframes animate {
+  0%, 100% {
+    -webkit-clip-path: polygon(0% 45%, 16% 44%, 33% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
+            clip-path: polygon(0% 45%, 16% 44%, 33% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
+  }
+  50% {
+    -webkit-clip-path: polygon(0% 60%, 15% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
+            clip-path: polygon(0% 60%, 15% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
+  }
+}
+@keyframes animate {
+  0%, 100% {
+    -webkit-clip-path: polygon(0% 45%, 16% 44%, 33% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
+            clip-path: polygon(0% 45%, 16% 44%, 33% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
+  }
+  50% {
+    -webkit-clip-path: polygon(0% 60%, 15% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
+            clip-path: polygon(0% 60%, 15% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
+  }
+}
+@-webkit-keyframes goDown {
+  0%, 10%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  40%, 60% {
+    -webkit-transform: translateY(-7px);
+            transform: translateY(-7px);
+  }
+}
+@keyframes goDown {
+  0%, 10%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  40%, 60% {
+    -webkit-transform: translateY(-7px);
+            transform: translateY(-7px);
+  }
+}
+@-webkit-keyframes showing {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+@keyframes showing {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+@-webkit-keyframes bounce {
+  from {
+    -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+  }
+  to {
+    -webkit-transform: translateY(3px);
+            transform: translateY(3px);
+  }
+}
+@keyframes bounce {
+  from {
+    -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+  }
+  to {
+    -webkit-transform: translateY(3px);
+            transform: translateY(3px);
+  }
+}
+@-webkit-keyframes showTextLeft {
+  from {
+    @apply opacity-0 left-[50%] z-[-1];
+  }
+  50% {
+    @apply opacity-0;
+  }
+  to {
+    @apply opacity-100 -left-[4.1rem]  z-[-1];
+  }
+}
+@keyframes showTextLeft {
+  from {
+    @apply opacity-0 left-[50%] z-[-1];
+  }
+  50% {
+    @apply opacity-0;
+  }
+  to {
+    @apply opacity-100 -left-[4.1rem]  z-[-1];
+  }
+}
+@-webkit-keyframes showTextRight {
+  from {
+    @apply opacity-0 right-[50%] z-[-1];
+  }
+  50% {
+    @apply opacity-0;
+  }
+  to {
+    @apply opacity-100 -right-[3.5rem]   z-[-1];
+  }
+}
+@keyframes showTextRight {
+  from {
+    @apply opacity-0 right-[50%] z-[-1];
+  }
+  50% {
+    @apply opacity-0;
+  }
+  to {
+    @apply opacity-100 -right-[3.5rem]   z-[-1];
+  }
+}
+@-webkit-keyframes float {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  50% {
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+@keyframes float {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  50% {
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes wave {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  10% {
+    -webkit-transform: rotate(16deg);
+            transform: rotate(16deg);
+  }
+  20% {
+    -webkit-transform: rotate(-6deg);
+            transform: rotate(-6deg);
+  }
+  30% {
+    -webkit-transform: rotate(16deg);
+            transform: rotate(16deg);
+  }
+  40% {
+    -webkit-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+  }
+  50% {
+    -webkit-transform: rotate(16deg);
+            transform: rotate(16deg);
+  }
+  60% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@keyframes wave {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  10% {
+    -webkit-transform: rotate(16deg);
+            transform: rotate(16deg);
+  }
+  20% {
+    -webkit-transform: rotate(-6deg);
+            transform: rotate(-6deg);
+  }
+  30% {
+    -webkit-transform: rotate(16deg);
+            transform: rotate(16deg);
+  }
+  40% {
+    -webkit-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+  }
+  50% {
+    -webkit-transform: rotate(16deg);
+            transform: rotate(16deg);
+  }
+  60% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes moving {
+  from {
+    left: 47%;
+  }
+  to {
+    left: 54%;
+  }
+}
+@keyframes moving {
+  from {
+    left: 47%;
+  }
+  to {
+    left: 54%;
   }
 }

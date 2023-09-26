@@ -1,0 +1,7 @@
+
+@mixin centringByflex{
+    @apply flex justify-center items-start;
+}
+@mixin splitSides {
+    @apply md:w-1/2  w-full;
+}
