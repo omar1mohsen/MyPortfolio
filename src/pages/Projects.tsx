@@ -12,7 +12,7 @@ function Projects() {
   };
 
   return (
-    <section id="projects" className="sec prtojectSec">
+    <main id="projects" className="sec prtojectSec">
       <h3 className="sec-title">PROJECTS</h3>
       <p className="sec-dec">
         Here you will find some of the personal and clients projects that I
@@ -32,7 +32,7 @@ function Projects() {
           </button>
         </div>
       ) : null}
-    </section>
+    </main>
   );
 }
 

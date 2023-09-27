@@ -20,6 +20,8 @@ body {
     @apply m-0 p-0 box-border;
     font-family: "Roboto";
     scroll-behavior: smooth !important;
+    height: auto;
+    overflow-x: hidden;
 }
 
 body::-webkit-scrollbar,
@@ -63,7 +65,7 @@ body::-webkit-scrollbar-thumb,
         }
     }
     .scoialNav {
-        @apply flex justify-center items-center w-fit mx-auto rounded-lg space-x-3 bg-[--white-color];
+        @apply flex justify-center items-center w-fit mx-auto rounded-lg space-x-3 max-sm:space-x-1 bg-[--white-color];
     }
 }
 
@@ -232,7 +234,7 @@ body::-webkit-scrollbar-thumb,
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    @apply md:pt-6 lg:pt-24 pb-6 px-2 sm:px-8 sm:h-screen flex items-center flex-wrap relative;
+    @apply md:pt-6 lg:pt-24 pb-6 px-2 sm:px-8 h-[90vh] pt-24  flex items-center flex-wrap relative;
     .sideNav {
         @apply fixed left-0 top-[50%] -translate-y-[50%] flex flex-col bg-white rounded-lg py-1 px-1 max-lg:hidden;
         .linkicon {
@@ -623,11 +625,11 @@ body::-webkit-scrollbar-thumb,
     }
 }
 .footerNav {
-    @apply flex justify-center items-center  space-x-2 bg-[--white-color] w-fit mx-auto  rounded-lg text-black shadow-lg shadow-[--sec-color];
+    @apply flex justify-center items-center  space-x-2 max-sm:space-x-1 bg-[--white-color] w-fit mx-auto  rounded-lg text-black shadow-lg shadow-[--sec-color];
     .socialLink {
         @apply px-4;
         .linkicon {
-            @apply w-8 h-8;
+            @apply w-8 h-8 max-sm:w-7 max-sm:h-7;
         }
     }
 }
@@ -643,7 +645,7 @@ body::-webkit-scrollbar-thumb,
 .sec {
     @apply pt-24 pb-8 max-sm:px-3 px-6 md:px-8 rounded-lg shadow-lg;
     .sec-title {
-        @apply relative text-4xl text-center font-bold uppercase tracking-[1.6px] py-3 italic text-[--sec-color];
+        @apply relative text-3xl sm:text-4xl text-center font-bold uppercase tracking-[1.6px] pb-4 italic text-[--sec-color];
         &::before {
             content: "";
             @apply absolute bottom-0 left-[50%] -translate-x-[45%] h-1 w-24 bg-[--sec-color] rounded-md;

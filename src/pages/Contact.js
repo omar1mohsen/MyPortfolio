@@ -82,7 +82,7 @@ function Contact() {
       });
     }
   };
-  return /*#__PURE__*/_react.default.createElement("section", {
+  return /*#__PURE__*/_react.default.createElement("main", {
     id: "contact",
     className: "sec contactsec"
   }, /*#__PURE__*/_react.default.createElement("h3", {

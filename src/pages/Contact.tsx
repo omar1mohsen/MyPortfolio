@@ -61,7 +61,7 @@ function Contact() {
     }
   };
   return (
-    <section id="contact" className="sec contactsec">
+    <main id="contact" className="sec contactsec">
       <h3 className="sec-title">CONTACT ME</h3>
       <p className="sec-dec">
         Feel free to Contact me by submitting the form below and I will get back
@@ -885,7 +885,7 @@ function Contact() {
         </form>
       </div>
       <ToastContainer />
-    </section>
+    </main>
   );
 }
 

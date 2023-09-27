@@ -29,7 +29,7 @@ function Projects() {
       });
     }
   };
-  return /*#__PURE__*/_react.default.createElement("section", {
+  return /*#__PURE__*/_react.default.createElement("main", {
     id: "projects",
     className: "sec prtojectSec"
   }, /*#__PURE__*/_react.default.createElement("h3", {

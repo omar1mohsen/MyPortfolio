@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Project } from "../data/projectsData";
 import ProjectModel from "./ProjectModel";
 import loadingImg from "../assets/loading.gif"
+
+
 function ProjectCard({ project }: { project: Project }) {
   const [open, setOpen] = React.useState(false);
   const[loading,setLoading] = useState(true)
@@ -22,7 +24,8 @@ function ProjectCard({ project }: { project: Project }) {
 
   return (
     <>
-      <div className="card">
+      <div
+      className="card">
         <div className="projectCard">
           <img src={`${handleLoading()}`} loading="lazy" alt={project.name} onLoad={()=>{setLoading(false)}} />
           <div className="projectDes">
