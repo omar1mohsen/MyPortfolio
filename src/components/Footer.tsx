@@ -1,6 +1,7 @@
 import React from 'react'
 import SocialNav from './SocialNav'
 import Logo from './Logo'
+import {Link } from 'react-scroll';
 
 function Footer() {
   return (
@@ -9,10 +10,10 @@ function Footer() {
         <SocialNav className='footerNav' />
   <div className="row">
     <ul className="secfooterNav">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About Me</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><Link spy={true} smooth={true} duration={500} offset={5}  to="home">Home</Link></li>
+      <li><Link spy={true} smooth={true} duration={500} offset={5}  to="about">About Me</Link></li>
+      <li><Link spy={true} smooth={true} duration={500} offset={5}  to="projects">Projects</Link></li>
+      <li><Link spy={true} smooth={true} duration={500} offset={5}  to="contact">Contact</Link></li>
     </ul>
   </div>
   <span>

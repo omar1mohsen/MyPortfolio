@@ -1,4 +1,4 @@
-@use "./styles/mixin.scss" as styles;
+@use "./styles/mixins/mixin.scss" as styles;
 
 @tailwind base;
 @tailwind components;
@@ -71,7 +71,7 @@ body::-webkit-scrollbar-thumb,
     @apply relative overflow-hidden  my-3 transition-all block w-full text-start py-4 text-[--white-color]  text-lg font-semibold border-b-gray-200/40 border-b-2;
 
     a {
-        @apply flex justify-start items-center hover:ps-8 hover:scale-105 hover:text-[--linkedin-color] transition-all scroll-smooth;
+        @apply flex justify-start items-center cursor-pointer hover:ps-8 hover:scale-105 hover:text-[--linkedin-color] transition-all scroll-smooth;
         .icon {
             @apply w-6 h-6 me-3;
         }
@@ -326,7 +326,7 @@ body::-webkit-scrollbar-thumb,
                 @apply font-extrabold text-[--sec-color];
             }
             a {
-                @apply underline font-extrabold me-1 text-[--sec-color];
+                @apply underline font-extrabold me-1 text-[--sec-color] cursor-pointer;
             }
         }
     }
@@ -634,7 +634,7 @@ body::-webkit-scrollbar-thumb,
 .secfooterNav {
     @apply my-10 flex justify-center items-center space-x-3  w-fit mx-auto border-2 border-gray-200 rounded-xl py-4 px-6 shadow-lg shadow-[--sec-color];
     a {
-        @apply py-2 font-semibold text-[--sec-color] capitalize  hover:text-[--white-color] md:text-lg hover:border-b-2 border-b-[--white-color] transition-all;
+        @apply py-2 font-semibold text-[--sec-color] capitalize  hover:text-[--white-color] md:text-lg hover:border-b-2 border-b-[--white-color] transition-all cursor-pointer;
     }
 }
 /*end footer */

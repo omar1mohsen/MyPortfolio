@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
+var _reactScroll = require("react-scroll");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function About() {
   var skills = ["ADOBE XD", "HTML5", "CSS", "BOOTSTRAP", "TAILWIND", "SCSS", "JAVASCRIPT", "TYPESCRIPT", "PHP", "REACT", "NEXT JS", "REACT HOOKS", "FIREBASE", "REDUX", "GIT", "GITHUB", "MUI", "RECOIL", "FORMIK", "SEO"];
@@ -39,8 +40,12 @@ function About() {
     className: "main-word"
   }, "Job"), " opportunities where I can contribute, learn and grow. If you have a good opportunity that matches my skills and experience then don't hesitate to ", /*#__PURE__*/_react.default.createElement("span", {
     className: "main-word"
-  }, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#contact"
+  }, /*#__PURE__*/_react.default.createElement(_reactScroll.Link, {
+    smooth: true,
+    duration: 500,
+    offset: 5,
+    spy: true,
+    to: "contact"
   }, "contact")), " me.")), /*#__PURE__*/_react.default.createElement("div", {
     className: "right-side"
   }, /*#__PURE__*/_react.default.createElement("h3", null, "My Skills"), /*#__PURE__*/_react.default.createElement("div", {

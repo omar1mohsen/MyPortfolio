@@ -8,6 +8,8 @@ import { BiSolidContact } from "react-icons/bi";
 import { FaHandPointDown } from "react-icons/fa";
 import ThemBtn from "./ThemBtn";
 import SocialNav from "./SocialNav";
+import {Link } from 'react-scroll';
+
 function Nav() {
   const [open,setOpen] = useState(false)
   const handleClose = ()=>{
@@ -19,16 +21,16 @@ function Nav() {
       <ul className={`nav-list ${open && 'activeList'}`}>
         <Logo className="navLogo" /> 
         <li className="nav-item">
-          <a href="#home" onClick={handleClose}><AiFillHome className="icon" />  Home</a>
+          <Link smooth={true} offset={5} duration={500} spy={true} to="home" onClick={handleClose}><AiFillHome className="icon" />  Home</Link>
         </li>
         <li className="nav-item">
-          <a href="#about" onClick={handleClose}><BsInfoSquareFill className="icon"/> About</a>
+          <Link smooth={true} offset={5} duration={500} spy={true} to="about" onClick={handleClose}><BsInfoSquareFill className="icon"/> About</Link>
         </li>
         <li className="nav-item">
-          <a href="#projects" onClick={handleClose}><SiTestrail className="icon"/> Projects</a>
+          <Link smooth={true} offset={5} duration={500} spy={true} to="projects" onClick={handleClose}><SiTestrail className="icon"/> Projects</Link>
         </li>
         <li className="nav-item">
-          <a href="#contact" onClick={handleClose}><BiSolidContact className="icon"/> Contact</a>
+          <Link smooth={true} offset={5} duration={500} spy={true} to="contact" onClick={handleClose}><BiSolidContact className="icon"/> Contact</Link>
         </li>
         <ThemBtn />
         <hr />

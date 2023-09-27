@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-scroll";
 
 function About() {
   const skills : string[] = [
@@ -59,7 +60,7 @@ function About() {
             I'm open to <span className="main-word">Job</span> opportunities
             where I can contribute, learn and grow. If you have a good
             opportunity that matches my skills and experience then don't
-            hesitate to <span className="main-word"><a href="#contact">contact</a></span> me.
+            hesitate to <span className="main-word"><Link smooth={true} duration={500} offset={5} spy={true}  to="contact">contact</Link></span> me.
           </p>
         </div>
         <div className="right-side">
