@@ -2,6 +2,7 @@ import React from "react";
 import SocialNav from "../components/SocialNav";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { BsInfoCircleFill } from "react-icons/bs";
+import { Link } from "react-scroll";
 
 function Home() {
   return (
@@ -9,10 +10,10 @@ function Home() {
       <SocialNav className="sideNav" />
       <div className="left-side">
         <img src={require("../assets/smallHero-.png")} alt="developerImage" />
-          <div className="content">
-            <h1>HEY, I'M Omar mohsen</h1>
-            <h1>HEY, I'M Omar mohsen</h1>
-          </div>
+        <div className="content">
+          <h1>HEY, I'M Omar mohsen</h1>
+          <h1>HEY, I'M Omar mohsen</h1>
+        </div>
         <h3>Frontend Developer</h3>
         <p>
           Highly skilled Frontend Web Developer creating exceptional user
@@ -29,10 +30,17 @@ function Home() {
             Download Resume
             <AiOutlineArrowDown className="btn-arrow" />
           </a>
-          <a href="#about" className="btn">
+          <Link
+            smooth={true}
+            offset={5}
+            duration={500}
+            spy={true}
+            to="about"
+            className="btn"
+          >
             About me
             <BsInfoCircleFill className="info-btn" />
-          </a>
+          </Link>
         </div>
       </div>
       <div className="right-side">
