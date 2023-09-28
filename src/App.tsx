@@ -7,10 +7,12 @@ import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import ScrollTopBtn from "./components/ScrollTopBtn";
 import { ThemeProvider } from "./context/ThemContext";
+import Loading from "./pages/Loading";
 
 function App() {
   return (
     <>
+      <Loading />
       <ThemeProvider>
         <Nav />
         <Home />
