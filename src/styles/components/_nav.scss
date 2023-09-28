@@ -1,0 +1,196 @@
+@use "./styles/mixins/mixin.scss" as styles;
+
+/* start navbar styles*/
+.nav {
+    @apply fixed w-full uppercase text-[var(--main-color)] font-bold items-center text-sm md:text-lg px-4 md:px-10 py-3 flex justify-between   top-0 left-0 z-50 max-sm:py-4 bg-white  shadow-md shadow-[var(--thr-color)];
+}
+.logo {
+    @apply flex justify-center items-center lg:text-xl text-[var(--sec-color)] hover:text-[var(--thr-color)] scale-90 hover:scale-100 transition-all;
+    .logo-img {
+        @apply w-10 lg:w-16 h-full rounded-full me-1;
+    }
+}
+.nav-list {
+    background-image: linear-gradient(131deg, var(--thr-color), var(--sec-color), var(--sec-color), var(--thr-color));
+    background-size: 300% 100%;
+    @apply hidden z-[999]  flex-col justify-start items-start  w-[60%] max-sm:w-[80%] h-screen px-6 py-12 rounded-e-xl absolute  left-0 top-0;
+    .navLogo {
+        @apply flex flex-col justify-center space-y-3 items-center scale-100 hover:scale-105  mx-auto text-xl text-[var(--white-color)];
+        .logo-img {
+            @apply w-16 h-full rounded-full mb-2;
+        }
+    }
+    hr {
+        @apply w-full h-0.5 bg-[var(--text-color)] opacity-60  block;
+    }
+    span {
+        font-family: "Pacifico", cursive;
+        @apply w-full my-4 text-center flex items-center justify-center font-semibold text-xl tracking-wider italic text-[var(--white-color)];
+        .icon {
+            @apply w-5 h-5 ms-2 text-[#FFC83D];
+            animation: goDown 1.3s linear infinite;
+        }
+    }
+    .scoialNav {
+        @apply flex justify-center items-center w-fit mx-auto rounded-lg space-x-3 max-sm:space-x-1 bg-[var(--white-color)];
+    }
+}
+
+.nav-item {
+    @apply relative overflow-hidden  my-3 transition-all block w-full text-start py-4 text-[var(--white-color)]  text-lg font-semibold border-b-gray-200/40 border-b-2;
+
+    a {
+        @apply flex justify-start items-center cursor-pointer hover:ps-8 hover:scale-105 hover:text-[var(--linkedin-color)] transition-all scroll-smooth;
+        .icon {
+            @apply w-6 h-6 me-3;
+        }
+    }
+}
+.activeList {
+    @apply flex;
+    animation: slidleft 0.3s linear;
+}
+
+.burger-btn {
+    @apply h-[2.3rem] relative  px-2 py-2 space-y-1.5 w-12 border-2 border-[var(--sec-color)]  rounded;
+
+    span {
+        @apply block w-7 h-[2px] bg-[var(--sec-color)] animate-pulse transition-all shadow-sm shadow-[var(--sec-color)];
+    }
+    span:nth-child(1) {
+        animation: fillSpan 0.5s infinite alternate linear;
+    }
+    span:nth-child(2) {
+        animation: fillSpan 0.5s infinite alternate linear;
+        animation-delay: 0.2s;
+    }
+    span:nth-child(3) {
+        animation: fillSpan 0.5s infinite alternate linear;
+        animation-delay: 0.4s;
+    }
+}
+.burger-btn:hover {
+    span {
+        animation-play-state: paused;
+    }
+}
+.activeBtn {
+    span:nth-child(1),
+    span:nth-child(3) {
+        @apply absolute left-[50%] -translate-x-[50%] bottom-[50%] -translate-y-[50%] w-7;
+    }
+    span:nth-child(1) {
+        @apply -rotate-45;
+    }
+    span:nth-child(3) {
+        @apply rotate-45;
+    }
+    span:nth-child(2) {
+        @apply opacity-0 animate-none;
+    }
+}
+.progress-bar-container {
+    @apply absolute bottom-0 left-0 w-full h-1;
+    .progress-bar {
+        @apply h-full bg-[var(--sec-color)] transition-all;
+    }
+}
+
+.themBtn {
+    @apply w-full overflow-hidden mb-4;
+    @include styles.centringByflex;
+    #toggle_checkbox {
+        display: none;
+    }
+
+    label {
+        @apply my-3  w-32 h-14 block relative cursor-pointer select-none;
+        background-color: #77b5fe;
+        border-radius: 56px;
+        transition: 0.3s ease background-color;
+        overflow: hidden;
+    }
+
+    #star {
+        position: absolute;
+        top: 13px;
+        left: 13px;
+        width: 30px;
+        height: 30px;
+        background-color: #fafd0f;
+        transform: scale(1);
+        border-radius: 50%;
+        transition:
+            0.3s ease top,
+            0.3s ease left,
+            0.3s ease transform,
+            0.3s ease background-color;
+        z-index: 1;
+    }
+
+    #star-1 {
+        position: relative;
+    }
+
+    #star-2 {
+        position: absolute;
+        transform: rotateZ(36deg);
+    }
+
+    .star {
+        top: 0;
+        left: -7px;
+        font-size: 54px;
+        line-height: 28px;
+        color: #fafd0f;
+        transition: 0.3s ease color;
+    }
+
+    #moon {
+        position: absolute;
+        bottom: -52px;
+        right: 8px;
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        border-radius: 50%;
+        transition: 0.3s ease bottom;
+    }
+
+    #moon:before {
+        content: "";
+        position: absolute;
+        top: -12px;
+        left: -17px;
+        width: 40px;
+        height: 40px;
+        background-color: #03a9f4;
+        border-radius: 50%;
+        transition: 0.3s ease background-color;
+    }
+
+    #toggle_checkbox:checked + label {
+        background-color: #000;
+    }
+
+    #toggle_checkbox:checked + label #star {
+        top: 3px;
+        left: 64px;
+        transform: scale(0.3);
+        background-color: yellow;
+    }
+
+    #toggle_checkbox:checked + label .star {
+        color: yellow;
+    }
+
+    #toggle_checkbox:checked + label #moon {
+        bottom: 8px;
+    }
+
+    #toggle_checkbox:checked + label #moon:before {
+        background-color: #000;
+    }
+}
+
+/* end navbar styles*/

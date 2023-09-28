@@ -1,0 +1,43 @@
+@use "./styles/mixins/mixin.scss" as styles;
+
+
+/*start aboutsec styles*/
+
+.aboutsec {
+    @apply bg-gray-200/50;
+}
+
+.about-contanier {
+    @include styles.centringByflex;
+    @apply flex-wrap lg:px-10 xl:px-20 mt-8;
+    .left-side,
+    .right-side {
+        @apply md:pe-12 xl:pe-20 w-full lg:w-1/2;
+        h3 {
+            @apply text-3xl my-8 font-bold text-[var(--sec-color)];
+        }
+    }
+    .left-side {
+        @apply max-md:text-center;
+        .about-dec {
+            @apply my-4 block text-[var(--text-color)] leading-[1.7]  tracking-wider;
+            .main-word {
+                @apply font-extrabold text-[var(--sec-color)];
+            }
+            a {
+                @apply underline font-extrabold me-1 text-[var(--sec-color)] cursor-pointer;
+            }
+        }
+    }
+    .right-side {
+        @apply max-md:text-center px-3;
+    }
+}
+.skills-contanier {
+    @apply flex items-center justify-start max-md:justify-center flex-wrap gap-3;
+    .skill-item {
+        @apply text-[var(--text-color)] text-sm font-semibold p-3 px-6 bg-gray-300/70 rounded-lg hover:bg-[var(--sec-color)] transition-all hover:text-[var(--white-color)] tracking-wider select-none;
+    }
+}
+
+/*end aboutsec styles*/

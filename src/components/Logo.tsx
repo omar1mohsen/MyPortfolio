@@ -7,6 +7,7 @@ function Logo({className} :{className? :string } ) {
       className="logo-img"
       src={require("../assets/logoImage.png")}
       alt="logoimage"
+      loading='lazy'
     />
     Omar Mohsen
   </a>

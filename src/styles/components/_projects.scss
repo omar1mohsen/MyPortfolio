@@ -1,0 +1,134 @@
+@use "./styles/mixins/mixin.scss" as styles;
+
+/*start prtojectSec styles*/
+.prtojectSec {
+    .projectsContanier {
+        @include styles.centringByflex;
+        @apply mt-6 justify-start lg:px-36 flex-wrap;
+        .card {
+            @apply w-full sm:w-1/2  lg:w-1/3  px-3 py-2;
+            .projectCard {
+                @apply shadow-lg shadow-gray-300 rounded-lg relative overflow-hidden;
+                .projectDes {
+                    @apply absolute top-[-100%] left-0 w-full h-full flex flex-col justify-center items-center overflow-hidden transition-all duration-300;
+                    h1 {
+                        @apply text-center my-4 text-lg font-bold text-[var(--white-color)];
+                    }
+                    button {
+                        @apply px-6 py-2 bg-[var(--white-color)] rounded-xl font-bold tracking-wider capitalize text-[var(--sec-color)]  skew-y-6 hover:scale-105 transition-all hover:bg-slate-200 hover:skew-y-0 my-4;
+                    }
+                    span {
+                        @apply py-2 px-4 bg-[var(--white-color)] absolute -top-0.5 -left-1 rounded-e-xl font-semibold text-[var(--sec-color)];
+                    }
+                }
+
+                &::before {
+                    content: "";
+                    background: linear-gradient(45deg, rgba(138, 3, 187, 0.774) 35%, rgb(117, 59, 243) 100%);
+                    @apply absolute left-0 top-[-100%] w-full h-full rounded-lg transition-all duration-200;
+                }
+
+                &:hover::before,
+                &:hover .projectDes {
+                    @apply top-0;
+                }
+
+                img {
+                    @apply h-[250px] w-full rounded-lg;
+                }
+            }
+        }
+    }
+    .moreBtn {
+        @apply mt-10 scale-110  mx-auto block w-fit;
+    }
+}
+.modal {
+    @include styles.centringByflex;
+    @apply w-full h-full flex justify-center items-center bg-black/60;
+
+    .card {
+        background: linear-gradient(45deg, rgba(138, 3, 187, 0.774) 35%, rgb(117, 59, 243) 100%);
+        @apply w-[95%] lg:w-[80%] py-5 px-6 max-sm:px-2 rounded-lg flex justify-center relative items-center flex-wrap max-h-[80vh] max-xl:overflow-y-scroll pt-8 max-xl:pt-16;
+        .closeBtn {
+            @apply w-8 h-8 text-[var(--white-color)] absolute top-5 right-5 z-10 hover:scale-110 hover:rotate-180 transition-all cursor-pointer;
+        }
+        .left-side,
+        .right-side {
+            @apply w-1/2 max-xl:w-full;
+        }
+        .left-side {
+            @apply relative  shadow-[var(--sec-color)] shadow-lg rounded-lg hover:shadow-xl hover:shadow-[var(--sec-color)] transition-all;
+            img {
+                @apply h-full max-xl:max-h-[400px] xl:min-h-[500px] w-full rounded-lg;
+            }
+            &:hover {
+                .links {
+                    @apply bg-black/70;
+                    .link {
+                        @apply opacity-100;
+                    }
+                }
+            }
+            .links {
+                @apply absolute top-0 left-0 bg-black/20 max-sm:bg-black/60 w-full h-full rounded-lg flex justify-center items-center space-x-6;
+                .error {
+                    @apply capitalize font-semibold text-[var(--white-color)] text-lg;
+                }
+                .link {
+                    @apply p-3 rounded-[50%] bg-[var(--text-color)] hover:bg-[var(--white-color)] hover:scale-110 transition-all opacity-30 max-sm:opacity-70 relative;
+                    &::after {
+                        @apply absolute   top-[50%] translate-y-[-50%] bg-[var(--text-color)] px-3 py-1 transition-all opacity-0 capitalize font-semibold;
+                    }
+                    &:first-child::after {
+                        content: "deploy";
+                        @apply -left-[4.1rem]  rounded-s-lg;
+                    }
+                    &:last-child::after {
+                        content: "Repo";
+                        @apply -right-[3.5rem]  rounded-e-lg;
+                    }
+                    &:hover::after {
+                        @apply hover:bg-[var(--white-color)] text-[var(--sec-color)];
+                    }
+                    &:hover:first-child:after {
+                        animation: showTextLeft 0.3s linear forwards;
+                    }
+                    &:hover:last-child:after {
+                        animation: showTextRight 0.3s linear forwards;
+                    }
+
+                    .icon {
+                        @apply w-7 h-7 text-[var(--white-color)] transition-all;
+                    }
+                    &:hover .icon {
+                        @apply text-[var(--sec-color)] scale-125;
+                    }
+                }
+            }
+        }
+        .right-side {
+            @apply ps-6 max-lg:px-2 max-xl:mt-5;
+            h2 {
+                @apply font-bold text-3xl text-center mb-3 tracking-tight text-[var(--thr-color)] italic;
+            }
+            .title {
+                @apply font-bold uppercase block mx-auto my-1 text-center text-[var(--white-color)] text-lg;
+            }
+            hr {
+                @apply w-[60%] h-0.5  border-0 mx-auto my-4 rounded-xl bg-gray-300;
+            }
+
+            p {
+                @apply text-[var(--white-color)] font-semibold capitalize leading-relaxed tracking-wider w-full max-lg:text-sm  mb-4 text-center;
+            }
+        }
+        .skills-contanier {
+            @apply justify-center gap-2;
+        }
+        .skill-item {
+            @apply text-[var(--sec-color)] bg-slate-200 hover:bg-[var(--sec-color)] hover:text-[var(--white-color)] max-xl:px-4 max-xl:py-2;
+        }
+    }
+}
+/*end prtojectSec styles*/

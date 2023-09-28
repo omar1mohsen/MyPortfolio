@@ -9,7 +9,7 @@ function Home() {
     <section id="home" className="herosec">
       <SocialNav className="sideNav" />
       <div className="left-side">
-        <img src={require("../assets/smallHero-.png")} alt="developerImage" />
+        <img src={require("../assets/smallHero-.png")} loading="lazy" alt="developerImage" />
         <div className="content">
           <h1>HEY, I'M Omar mohsen</h1>
           <h1>HEY, I'M Omar mohsen</h1>
@@ -44,7 +44,7 @@ function Home() {
         </div>
       </div>
       <div className="right-side">
-        <img src={require("../assets/heroImage.png")} alt="developerImage" />
+        <img src={require("../assets/heroImage.png")} loading="lazy" alt="developerImage" />
       </div>
     </section>
   );

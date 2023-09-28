@@ -32,7 +32,7 @@ export default function ProjectModel({
       <Box  className="card">
           <AiOutlineCloseCircle onClick={handleClose} className="closeBtn"/>
         <div className="left-side">
-        <img src={project.projectImage} alt={project.name}/>
+        <img src={project.projectImage} loading="lazy" alt={project.name}/>
         <div className="links">
           {project.DemoLink !== "" ?
           <a href={project.DemoLink} target="_blank" className="link" rel="noreferrer">

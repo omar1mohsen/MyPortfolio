@@ -1,0 +1,91 @@
+/*common items*/
+.sec {
+    @apply pt-24 pb-8 max-sm:px-3 px-6 md:px-8 rounded-lg shadow-lg;
+    .sec-title {
+        @apply relative text-3xl sm:text-4xl text-center font-bold uppercase tracking-[1.6px] pb-4 italic text-[var(--sec-color)];
+        &::before {
+            content: "";
+            @apply absolute bottom-0 left-[50%] -translate-x-[45%] h-1 w-24 bg-[var(--sec-color)] rounded-md;
+        }
+        &::after {
+            content: "";
+            background: linear-gradient(var(--sec-color), var(--thr-color));
+            @apply absolute -bottom-2 -translate-x-[45%] h-5 w-5  rounded-[50%];
+            animation: moving 1s infinite ease-in-out alternate;
+        }
+    }
+    .sec-dec {
+        @apply my-6 text-sm lg:text-lg lg:w-[60%] mx-auto  text-center font-[500] tracking-widest text-[var(--text-color)];
+    }
+}
+.btn {
+    @apply py-2 px-5 lg:px-6 cursor-pointer rounded-xl bg-[var(--sec-color)] text-[var(--white-color)] font-bold uppercase text-sm sm:text-lg hover:scale-[1.05] transition-all hover:shadow-lg hover:shadow-[var(--sec-color)] flex justify-center items-center;
+    background-image: linear-gradient(131deg, var(--thr-color), var(--sec-color), var(--sec-color), var(--thr-color));
+    background-size: 300% 100%;
+}
+.btn:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--sec-color);
+    background-size: 100% 100%;
+    transform: translateY(-0.15em);
+}
+
+.socialLink {
+    @apply py-3 px-2  relative cursor-pointer;
+    &::before {
+        content: "";
+        @apply w-full h-full transition-all  bg-[var(--sec-color)] absolute left-0 top-0 opacity-0 rounded-lg;
+    }
+    &:hover::before {
+        @apply opacity-30;
+    }
+    .linkicon {
+        @apply w-8 h-8;
+    }
+    .linkedin {
+        @apply text-[var(--linkedin-color)];
+    }
+    .twitter {
+        @apply text-[var(--twitter-color)];
+    }
+    .whatapp {
+        @apply text-[var(--whatapp-color)];
+    }
+    .gmail {
+        @apply text-[var(--gmail-color)];
+    }
+}
+
+.scrollBtnTop {
+    background-image: linear-gradient(131deg, var(--thr-color), var(--sec-color), var(--sec-color), var(--thr-color)) !important;
+    background-size: 300% 100% !important;
+    @apply fixed bottom-5 right-5 z-50  text-[var(--white-color)] rounded-lg  p-1 opacity-90 hover:opacity-100 scale-90 hover:scale-105 shadow-md transition duration-150 ease-in-out;
+    .icon {
+        @apply w-8 h-8;
+    }
+}
+.hide {
+    @apply hidden;
+}
+
+.dark {
+    background-image: none;
+    @apply bg-black;
+    .sec {
+        .sec-dec {
+            @apply text-[var(--white-color)];
+        }
+        .about-dec {
+            @apply text-[var(--white-color)];
+        }
+        .skill-item {
+            @apply text-[var(--white-color)];
+        }
+        .projectsContanier {
+            .card {
+                .projectCard {
+                    @apply shadow-md shadow-[var(--sec-color)];
+                }
+            }
+        }
+    }
+}

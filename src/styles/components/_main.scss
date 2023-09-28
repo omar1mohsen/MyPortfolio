@@ -1,0 +1,29 @@
+:root {
+    --main-color: #111111;
+    --sec-color: #7843e9;
+    --thr-color: #a581f0;
+    --white-color: #fefefe;
+    --text-color: #656578;
+    --twitter-color: #06a1e1;
+    --linkedin-color: #37497b;
+    --whatapp-color: #25d366;
+    --gmail-color: #c61a1a;
+}
+
+body {
+    @apply m-0 p-0 box-border;
+    font-family: "Roboto";
+    scroll-behavior: smooth !important;
+    height: auto;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar,
+.modal .card::-webkit-scrollbar {
+    @apply w-2 rounded-xl hover:w-2.5 transition-all;
+    background-image: linear-gradient(131deg, var(--sec-color), var(--thr-color), var(--sec-color), var(--thr-color));
+}
+body::-webkit-scrollbar-thumb,
+.modal .card::-webkit-scrollbar-thumb {
+    @apply bg-[--white-color]  rounded-2xl scroll-smooth;
+}
