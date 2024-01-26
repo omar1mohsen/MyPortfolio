@@ -6,7 +6,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    @apply md:pt-6 lg:pt-24 pb-6 px-2 sm:px-8 h-[90vh] pt-24  flex items-center flex-wrap relative;
+    @apply md:pt-6 lg:pt-24 pb-6 px-2 sm:px-8 h-[90vh] pt-24 w-[600px]  flex items-center flex-wrap relative;
     .sideNav {
         @apply fixed left-0 top-[50%] -translate-y-[50%] flex flex-col bg-white rounded-lg py-1 px-1 max-lg:hidden;
         .linkicon {
